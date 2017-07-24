@@ -34,7 +34,7 @@ function SetupSettingsModal( raid ) {
 				document.getElementById( "modal-sound-choice-control" ).classList.add( "input-control" );
 				document.getElementById( "modal-sound-choice-dropdown" ).classList.remove( "disabled" );
 			} else {
-				document.getElementById( "modal-enable-sound" ).innerHTML = 'Enable Sound Notifications<i class="right alarm outline icon"></i>';
+				document.getElementById( "modal-enable-sound" ).innerHTML = 'サウンド通知をオフにする<i class="right alarm outline icon"></i>';
 				document.getElementById( "modal-enable-sound" ).classList.remove( "negative" );
 				document.getElementById( "modal-sound-volume-control" ).classList.add( "slider-control-disabled" );
 				document.getElementById( "modal-sound-volume-control" ).classList.remove( "slider-control" );
@@ -67,7 +67,7 @@ function SaveIndividualSettings() {
 			} else {
 				individualSettings[ i ].settings.soundNotifOn = false;
 			}
-			if ( document.getElementById( "modal-enable-notif" ).innerHTML === 'デスクトップ通知をオフにする<i class="right remove circle icon"></i>' ) {
+			if ( document.getElementById( "modal-enable-notif" ).innerHTML === 'サウンド通知をオフにする<i class="right remove circle icon"></i>' ) {
 				individualSettings[ i ].settings.desktopNotifOn = true;
 			} else {
 				individualSettings[ i ].settings.desktopNotifOn = false;
@@ -94,7 +94,7 @@ function CreateSettingsModalFrame() {
 	result += '<div class="image content">';
 	result += '<img id="settings-modal-image" class="ui medium rounded image" src="http://via.placeholder.com/250x250">';
 	result += '<div id="settings-modal-desc" class="description">';
-	result += '<button id="modal-enable-notif" class="ui bigger button right labeled icon">デスクトップ通知をオンにする<i class="right check circle icon"></i></button>';
+	result += '<button id="modal-enable-notif" class="ui bigger button right labeled icon">通知の大きさ<i class="right check circle icon"></i></button>';
 	result += '<span id="modal-desktop-notif-size-control" class="input-control-disabled"><span class="input-title">Desktop Notification Size</span><div id="modal-desktop-notif-size-dropdown" class="ui disabled compact selection dropdown"><input id="modal-desktop-notif-size-input" type="hidden" name="formatting" value="large"><i class="dropdown icon"></i><div class="default text">Notif Size</div><div class="menu"><div class="item" data-value="small">小さい</div><div class="item" data-value="large">大きい</div></div></div></span>';
 	result += '<button id="modal-enable-sound" class="ui bigger button right labeled icon">Enable Sound Notifications<i class="right alarm outline icon"></i></button>';
 	result += '<span id="modal-sound-choice-control" class="input-control-disabled"><span class="input-title">Sound Notification Choice</span><div id="modal-sound-choice-dropdown" class="ui compact selection disabled dropdown"><input id="modal-sound-choice-input" type="hidden" name="formatting" value="beeps"><i class="dropdown icon"></i><div class="default text">Sound Choice</div><div class="menu"><div class="item" data-value="beeps">Beeps Appear</div><div class="item" data-value="lily-event-ringring">GBF - Lily (Event) - Ring Ring</div><div class="item" data-value="andira-oniichan">GBF - Andira - Onii-chan</div><div class="item" data-value="titanfall-droppingnow">Titanfall - Dropping Now</div></div></div></span>';
@@ -529,7 +529,7 @@ function ToggleSoundNotifications( clicked ) {
 				individualSettings[ i ].settings.soundNotifOn = true;
 			}
 		}
-		document.getElementById( "enable-sound" ).innerHTML = 'デスクトップ通知をオフにする<i class="right alarm mute outline icon"></i>';
+		document.getElementById( "enable-sound" ).innerHTML = 'サウンド通知をオフにする<i class="right alarm mute outline icon"></i>';
 		document.getElementById( "enable-sound" ).classList.add( "negative" );
 		document.getElementById( "sound-volume-control" ).classList.remove( "slider-control-disabled" );
 		document.getElementById( "sound-volume-control" ).classList.add( "slider-control" );

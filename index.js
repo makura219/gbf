@@ -101,7 +101,6 @@ client.stream( 'statuses/filter', {
 
 		var raidInfo = {
 			id: raidID,
-			user: "@" + event.user.screen_name,
 			time: event.created_at,
 			room: room,
 			message: message,

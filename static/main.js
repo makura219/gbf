@@ -203,7 +203,7 @@ function SendDesktopNotif( data ) {
 			}
 			if ( settings.notification.desktopNotifSize === "small" ) {
 				notification = new Notification( title, {
-					body: "ID: " + data.id + "\nTweeter: " + data.user + "\nMessage: " + data.message,
+					body: "ID: " + data.id,
 					icon: raidConfig.image
 				} );
 			} else {
@@ -212,9 +212,6 @@ function SendDesktopNotif( data ) {
 					image: raidConfig.image
 				} );
 			}
-			setTimeout( function () {
-				notification.close();
-			}, 5000 );
 			notification.onclick = function ( event ) {
 				event.preventDefault();
 				var raid = document.getElementById( data.id );
@@ -240,7 +237,7 @@ function SendDesktopNotif( data ) {
 						}
 						if ( individualSettings[ i ].settings.desktopNotifSize === "small" ) {
 							notification = new Notification( title, {
-								body: "ID: " + data.id + "\nTweeter: " + data.user + "\nMessage: " + data.message,
+								body: "ID: " + data.id,
 								icon: raidConfig.image
 							} );
 						} else {
@@ -249,9 +246,6 @@ function SendDesktopNotif( data ) {
 								image: raidConfig.image
 							} );
 						}
-						setTimeout( function () {
-							notification.close();
-						}, 5000 );
 						notification.onclick = function ( event ) {
 							event.preventDefault();
 							var raid = document.getElementById( data.id );

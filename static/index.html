@@ -10,20 +10,36 @@
 	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="semantic/dist/semantic.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="index.css">
 	<link rel="stylesheet" type="text/css" href="sweetalert/sweetalert.css">
-	<script src="sweetalert/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="darken.css">
+	<link rel="stylesheet" type="text/css" href="sliders.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-48921108-3', 'auto');
+		ga('send', 'pageview');
+	</script>
 </head>
 
 <body>
 	<div id="container" class="ui raised very padded container segment fluid">
 		<div id="header">
-			<div class="ui top attached tabular menu">
+			<div id="settings-menu" class="ui top attached tabular menu">
 				<div class="active item" data-tab="notif-settings-tab">Notification Settings</div>
 				<div class="item" data-tab="layout-settings-tab">Layout Settings</div>
 			</div>
 			<div class="ui bottom attached active tab segment" data-tab="notif-settings-tab">
-				<button id="enable-notif" class="ui bigger button right labeled icon">Enable Desktop Notifications<i class="right announcement icon"></i></button>
+				<button id="enable-notif" class="ui bigger button right labeled icon">Enable Desktop Notifications<i class="right check circle icon"></i></button>
 				<span id="desktop-notif-size-control" class="input-control-disabled">
 					<span class="input-title">Desktop Notification Size</span>
 				<div id="desktop-notif-size-dropdown" class="ui disabled compact selection dropdown">
@@ -58,10 +74,22 @@
 			</div>
 			<div class="ui bottom attached tab segment" data-tab="layout-settings-tab">
 				<div class="ui buttons layout-switcher">
-					<button id="horiz-layout-btn" class="ui disabled primary button">Horizontal</button>
+					<button id="horiz-layout-btn" class="ui bigger primary button">Horizontal</button>
 					<div class="or"></div>
-					<button id="vertical-layout-btn" class="ui disabled button">Vertical</button>
+					<button id="vertical-layout-btn" class="ui bigger button">Vertical</button>
 				</div>
+				<span id="vertical-stacking-control" class="input-control-disabled">
+					<span class="input-title">Vertical Layout</span>
+				<div id="vertical-stacking-dropdown" class="ui disabled compact selection dropdown">
+					<input id="vertical-stacking-input" type="hidden" name="formatting" value="row">
+					<i class="dropdown icon"></i>
+					<div class="default text">Vertical Layout</div>
+					<div class="menu">
+						<div class="item" data-value="stacking">Stacking</div>
+						<div class="item" data-value="row">Single Row</div>
+					</div>
+				</div>
+				</span>
 				<span class="input-control">
 					<span class="input-title">Info Level</span>
 				<div id="info-level" class="ui compact selection dropdown">
@@ -89,18 +117,25 @@
 				</div>
 				<span class="input-footer">results</span>
 				</span>
+				<button id="enable-night" class="ui bigger button right labeled icon">Enable Night Mode<i class="right moon icon"></i></button>
 			</div>
 			<div class="ui segment misc-controls">
 				<a class="dbox-donation-button" href="https://donorbox.org/keep-gbfraiders-running">Donate</a>
 				<button id="help-btn" class="help primary ui button right labeled icon">Help<i class="right help circle outline icon"></i></button>
 				<div class="ui special wide popup">
-					<div class="header">Notable Features</div>
+					<div class="header">Help With Notable Features</div>
 					<ul>
-						<li><span class="tip-title">Join Button:</span> If you have the Viramate Chrome extension, have GBF running in another browser tab/window, have enabled the Web API setting in Viramate, and have reloaded the GBF page, the Join button will send you right to the support summon selection page for that raid provided that you meet the requirements for the raid and have enough BP.</li>
-						<li><span class="tip-title">Click to Copy:</span> Click on any part of a raid's  row besides the Join button to copy the raid's ID for easy copying.</li>
+						<li><span class="tip-title">Join Button:</span> If you have the Viramate Chrome extension, have GBF running in another browser tab/window, have enabled the Web API setting in Viramate, and have reloaded the GBF page, the Join button will send you right
+							to the support summon selection page for that raid provided that you meet the requirements for the raid and have enough BP.</li>
+						<li><span class="tip-title">Click to Copy:</span> Click on any part of a raid's row besides the Join button to copy the raid's ID for easy copying.</li>
 						<li><span class="tip-title">Desktop Notifications:</span> Click on a desktop notification to copy it's id or to join the raid if you have the Viramate integration setup.</li>
 					</ul>
-					<br>
+					<div class="header">Vertical Layout Options</div>
+					<ul>
+						<li><span class="tip-title">Single Row:</span>The "Single Row" option will just keep adding new selected raids to a single row which means that you will have to scroll horizontally after a certain number.</li>
+						<li><span class="tip-title">Stacking:</span>The "Stacking" option will keep everything on the same page by putting new selected raids below the first couple like a grid. PLEASE NOTE: The "Stacking" option does not work in Chrome because Chrome has a
+							bug that they haven't fixed yet. I will update the feature when they do fix it.</li>
+					</ul>
 					<div class="header">Support</div>
 					<ul>
 						<li>If you want to browse the code of this site or are looking to host your own copy, head on over to <a href="https://github.com/ypinskiy/GBF-Raiders">the GitHub page</a> for the site.</li>
@@ -108,7 +143,7 @@
 						<li>If you don't want to use Reddit, send me an email at <a href="mailto:support@gbfraiders.com">support@gbfraiders.com</a></li>
 					</ul>
 				</div>
-				<table id="connection-status" class="ui definition compact collapsing red table">
+				<table id="connection-status" class="ui definition unstackable  compact collapsing red table">
 					<tbody>
 						<td class="collapsing">Connection Status:</td>
 						<td id="connection-status-value" class="collapsing">DOWN</td>
@@ -127,31 +162,19 @@
 		<div class="ui message">
 			<i class="close icon"></i>
 			<div class="header">
-				Update v1.3!
+				News - 7/05/2017
 			</div>
-			<p>WOW! Thanks for every one who donated! I just hosted GBFRaiders on a brand spanking new server that won't go down if there is too many people going to it! (Hopefully...) This update finally has the vertical layout like aikats that people asked for, along with individual notification settings for each raid in that mode. I also added alerts for when you try to join a raid when: you have not enough BP to join, the raid is full, the raid is over, and when you are already in the raid. The desktop notification title now changes from the English name to the Japanese name depending on the language that the original tweet was in. Just for fun, I made the join button change colors based on the raid status: blue for unclicked, grey for clicked, red for an error, green for success.</p>
+			<p>Hello everyone! I made a small patch fixing the vertical settings not sending notifications issue. I also made some changes to dark mode, please give me your opinions on it in the Reddit post. I also made some adjustments so that things fit on the screen better when you make the window really thin/small. Raids should now re-subscribe themselves after the server goes down then back up.</p>
 		</div>
 	</div>
-	<iframe id="viramate-api" src="chrome-extension://fgpokpknehglcioijejfeebigdnbnokj/content/api.html" width="1" height="1">
-		<p>Your browser does not support iframes.</p>
-	</iframe>
-	<script>
-		(function(i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r;
-			i[r] = i[r] || function() {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-			a = s.createElement(o),
-				m = s.getElementsByTagName(o)[0];
-			a.async = 1;
-			a.src = g;
-			m.parentNode.insertBefore(a, m)
-		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-		ga('create', 'UA-48921108-3', 'auto');
-		ga('send', 'pageview');
+	<script type="text/javascript">
+		if (!navigator.userAgent.toLowerCase().match('edge') && !navigator.userAgent.toLowerCase().match('firefox') && document.getElementById('container'))
+			document.getElementById('container').innerHTML += '<iframe id="viramate-api" src="chrome-extension://fgpokpknehglcioijejfeebigdnbnokj/content/api.html" width="1" height="1"><p>Your browser does not support iframes.</p></iframe>';
 	</script>
-	<script src="index.js"></script>
+	<script src="sweetalert/sweetalert.min.js"></script>
+	<script src="raids.js"></script>
+	<script src="settings.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>

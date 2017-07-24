@@ -65,7 +65,7 @@ function CreateHorizontalCompactRaidRow( data ) {
 	newLine.classList.add( "copy-div", "smaller" );
 	newLine.dataset.clipboard = data.id;
 	var imageTD = document.createElement( "td" );
-	imageTD.innerHTML = '<div class="ui items"><div class="item"><div class="ui tiny image"><img src="' + raidConfig.image + '"></div><div class="content"><div class="header">' + raidConfig.english + '</div><div class="meta"><span>' + raidConfig.japanese + '</span></div></div></div>';
+	imageTD.innerHTML = '<div class="ui items"><div class="item"><div class="ui tiny image"><img src="' + raidConfig.image + '"></div><div class="content"><div class="header">' + raidConfig.japanese + '</div><div class="meta"><span>' + raidConfig.japanese + '</span></div></div></div>';
 	var idTD = document.createElement( "td" );
 	idTD.id = data.id + '-label';
 	idTD.classList.add( "center", "aligned" );
@@ -112,7 +112,7 @@ function CreateHorizontalNormalRaidRow( data ) {
 	newLine.classList.add( "copy-div" );
 	newLine.dataset.clipboard = data.id;
 	var imageTD = document.createElement( "td" );
-	imageTD.innerHTML = '<div class="ui items"><div class="item"><div class="ui image"><img src="' + raidConfig.image + '"></div><div class="content"><div class="header">' + raidConfig.english + '</div><div class="meta"><span>' + raidConfig.japanese + '</span></div></div></div>';
+	imageTD.innerHTML = '<div class="ui items"><div class="item"><div class="ui image"><img src="' + raidConfig.image + '"></div><div class="content"><div class="header">' + raidConfig.japanese + '</div><div class="meta"><span>' + raidConfig.japanese + '</span></div></div></div>';
 	var idTD = document.createElement( "td" );
 	idTD.id = data.id + '-label';
 	idTD.classList.add( "center", "aligned" );
@@ -170,7 +170,7 @@ function CreateHorizontalFullRaidRow( data ) {
 	contentTD.classList.add( "center", "aligned" );
 	var nameDiv = document.createElement( "div" );
 	nameDiv.classList.add( "ui", "two", "column", "divided", "grid" );
-	nameDiv.innerHTML = '<div class="column item"><div class="name-header">' + raidConfig.english + '</div><div class="name-meta">' + raidConfig.japanese + '</div></div>';
+	nameDiv.innerHTML = '<div class="column item"><div class="name-header">' + raidConfig.japanese + '</div><div class="name-meta">' + raidConfig.japanese + '</div></div>';
 	var idSpan = document.createElement( "span" );
 	idSpan.id = data.id + '-label';
 	idSpan.classList.add( "column" );

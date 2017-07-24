@@ -67,7 +67,7 @@ function SaveIndividualSettings() {
 			} else {
 				individualSettings[ i ].settings.soundNotifOn = false;
 			}
-			if ( document.getElementById( "modal-enable-notif" ).innerHTML === 'サウンド通知をオフにする<i class="right remove circle icon"></i>' ) {
+			if ( document.getElementById( "modal-enable-notif" ).innerHTML === 'デスクトップ通知をオフにする<i class="right remove circle icon"></i>' ) {
 				individualSettings[ i ].settings.desktopNotifOn = true;
 			} else {
 				individualSettings[ i ].settings.desktopNotifOn = false;

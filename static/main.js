@@ -26,7 +26,9 @@ var settings = {
 		raidMaxResults: 30,
 		nightMode: false
 	},
-	version: "1.4"
+	version: "1.5",
+	newsSeen: false,
+	cardSlots: 8
 };
 
 socket.on( 'tweet', function ( data ) {
@@ -43,7 +45,7 @@ function CheckConnectionStatus() {
 		document.getElementById( "connection-status" ).classList.remove( "red" );
 		document.getElementById( "connection-status" ).classList.add( "green" );
 		document.getElementById( "connection-status-value" ).innerHTML = "UP";
-		if (wasDown) {
+		if ( wasDown ) {
 			if ( localStorage.getItem( "selectedRaids" ) ) {
 				var tempSelectedRaids = JSON.parse( localStorage.getItem( "selectedRaids" ) );
 				for ( var i = 0; i < tempSelectedRaids.length; i++ ) {
@@ -201,7 +203,7 @@ function SendDesktopNotif( data ) {
 			}
 			if ( settings.notification.desktopNotifSize === "small" ) {
 				notification = new Notification( title, {
-					body: "ID: " + data.id,
+					body: "ID: " + data.id + "\nTweeter: " + data.user + "\nMessage: " + data.message,
 					icon: raidConfig.image
 				} );
 			} else {
@@ -210,6 +212,9 @@ function SendDesktopNotif( data ) {
 					image: raidConfig.image
 				} );
 			}
+			setTimeout( function () {
+				notification.close();
+			}, 5000 );
 			notification.onclick = function ( event ) {
 				event.preventDefault();
 				var raid = document.getElementById( data.id );
@@ -235,7 +240,7 @@ function SendDesktopNotif( data ) {
 						}
 						if ( individualSettings[ i ].settings.desktopNotifSize === "small" ) {
 							notification = new Notification( title, {
-								body: "ID: " + data.id,
+								body: "ID: " + data.id + "\nTweeter: " + data.user + "\nMessage: " + data.message,
 								icon: raidConfig.image
 							} );
 						} else {
@@ -244,6 +249,9 @@ function SendDesktopNotif( data ) {
 								image: raidConfig.image
 							} );
 						}
+						setTimeout( function () {
+							notification.close();
+						}, 5000 );
 						notification.onclick = function ( event ) {
 							event.preventDefault();
 							var raid = document.getElementById( data.id );

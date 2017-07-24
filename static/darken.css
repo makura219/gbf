@@ -2,12 +2,33 @@
 	background-color: #2a465c !important;
 }
 
-.darken>div {
+.darken>div:not(.sweet-overlay) {
 	background-color: #031019 !important;
+}
+
+.darken .sweet-alert {
+	background-color: #2a465c !important;
+}
+
+.darken .sweet-alert>h2 {
+	color: white !important;
+}
+
+.darken .sweet-alert>p {
+	color: white !important;
 }
 
 .darken #raid-container>.card {
 	background-color: #2a465c !important;
+}
+
+.darken #selected-raids {
+	color: white !important;
+}
+
+.darken .message {
+	background-color: #2a465c !important;
+	color: white !important;
 }
 
 .darken .menu>.item {
@@ -19,7 +40,15 @@
 	color: lightgrey !important;
 }
 
-.darken>div>div>.segment {
+.darken .sidebar {
+	border-bottom: 3px solid black !important;
+}
+
+.darken .sidebar>.segment {
+	background-color: #2a465c !important;
+}
+
+.darken #header>div.ui.segment:not(.inverted) {
 	background-color: #2a465c !important;
 }
 
@@ -43,14 +72,6 @@
 	border: 1px solid black;
 }
 
-.darken #raid-table td>.items>.item>.content>.header {
-	color: white !important;
-}
-
-.darken #raid-table td>.items>.item>.content>.meta {
-	color: white !important;
-}
-
 .darken #raid-container table th {
 	background-color: #2a465c !important;
 	color: white !important;
@@ -63,26 +84,26 @@
 	border: 1px solid black;
 }
 
-.darken #raid-container table td>.items>.item>.content>.header {
+.darken .header {
 	color: white !important;
 }
 
-.darken #raid-container table td>.items>.item>.content>.meta {
+.darken .meta {
 	color: white !important;
 }
 
 .darken :not(.layout-switcher):not(td)>.button:not(.negative) {
-	background-color: #031019 !important;
-	color: white !important;
-}
-
-.darken .layout-switcher>button {
 	background-color: #316d92 !important;
 	color: white !important;
 }
 
-.darken .layout-switcher>button.primary {
+.darken .layout-switcher>button {
 	background-color: #031019 !important;
+	color: white !important;
+}
+
+.darken .layout-switcher>button.primary {
+	background-color: #316d92 !important;
 	color: white !important;
 }
 
@@ -110,7 +131,7 @@
 	background-color: #000000 !important;
 }
 
-.darken>div>div>.segment>span>.slider-title {
+.darken .slider-title {
 	color: white !important;
 }
 

@@ -594,7 +594,7 @@ function AddSelectedRaid( room ) {
 	}
 	if ( settings.layout.orientation === "horizontal" ) {
 		if ( document.getElementById( room ) === null ) {
-			if ( document.getElementById( "selected-raids" ).innerHTML === "No raids selected. Please search for a raid in the search bar above." ) {
+			if ( document.getElementById( "selected-raids" ).innerHTML === "バトルが選択されていません。検索して追加してください。" ) {
 				document.getElementById( "selected-raids" ).innerHTML = "";
 			}
 			if ( settings.debugLevel > 0 ) {

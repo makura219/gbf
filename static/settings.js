@@ -3,7 +3,7 @@ function SetupSettingsModal( raid ) {
 		console.log( "Setting up settings modal for raid: " + raid.room );
 	}
 	document.getElementById( "settings-modal" ).dataset.room = raid.room;
-	document.getElementById( "settings-modal-header" ).innerHTML = raid.english;
+	document.getElementById( "settings-modal-header" ).innerHTML = raid.japanese;
 	document.getElementById( "settings-modal-image" ).src = raid.image;
 	for ( var i = 0; i < individualSettings.length; i++ ) {
 		if ( raid.room === individualSettings[ i ].room ) {

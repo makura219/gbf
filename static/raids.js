@@ -438,7 +438,7 @@ function CreateHorizontalCompactRaidTable() {
 	if ( document.getElementById( "selected-raids-label" ) === null ) {
 		var selectedRaidsDiv = document.createElement( "div" );
 		selectedRaidsDiv.classList.add( "ui", "secondary", "inverted", "blue", "segment" );
-		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">バトルが選択されていません。検索して追加してください。</div>';
+		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">検索してバトルを追加します。</div>';
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
 	raidTable.innerHTML = '<thead><tr><th class="center aligned nine wide">敵の名前</th><th class="center aligned single line three wide">救援ID</th><th class="center aligned single line four wide">IDをコピー</th></tr></thead>';
@@ -462,7 +462,7 @@ function CreateHorizontalNormalRaidTable() {
 	if ( document.getElementById( "selected-raids-label" ) === null ) {
 		var selectedRaidsDiv = document.createElement( "div" );
 		selectedRaidsDiv.classList.add( "ui", "secondary", "inverted", "blue", "segment" );
-		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">バトルが設定されていません。検索して追加してください。</div>';
+		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">検索してバトルを追加します。</div>';
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
 	raidTable.classList.add( "padded" );
@@ -487,11 +487,11 @@ function CreateHorizontalFullRaidTable() {
 	if ( document.getElementById( "selected-raids-label" ) === null ) {
 		var selectedRaidsDiv = document.createElement( "div" );
 		selectedRaidsDiv.classList.add( "ui", "secondary", "inverted", "blue", "segment" );
-		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">バトルが設定されていません。検索して追加してください。</div>';
+		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">検索してバトルを追加します。</div>';
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
 	raidTable.classList.add( "padded" );
-	raidTable.innerHTML = '<thead><tr><th class="center aligned four wide">Raid Image</th><th class="center aligned nine wide">Raid Content</th><th class="center aligned single line four wide">Join Info</th></tr></thead>';
+	raidTable.innerHTML = '<thead><tr><th class="center aligned four wide">クエスト画像</th><th class="center aligned nine wide">クエスト情報</th><th class="center aligned single line four wide">救援情報</th></tr></thead>';
 	var raidTableBody = document.createElement( "tbody" );
 	raidTableBody.id = "table-body";
 	try {
@@ -606,7 +606,7 @@ function AddSelectedRaid( room ) {
 				var selectedLabel = document.createElement( "div" );
 				selectedLabel.classList.add( "ui", "big", "label", "image", "selected-raids-label" );
 				selectedLabel.id = room;
-				selectedLabel.innerHTML = '<img src="' + raid.image + '">' + raid.english + '<i class="delete icon"></i>';
+				selectedLabel.innerHTML = '<img src="' + raid.image + '">' + raid.japanese + '<i class="delete icon"></i>';
 				document.getElementById( "selected-raids" ).appendChild( selectedLabel );
 				selectedLabel.addEventListener( "click", function ( event ) {
 					RemoveSelectedRaid( room );
@@ -675,7 +675,7 @@ function AddSelectedVerticalCompactRaid( raid ) {
 	raidContent.classList.add( "content" );
 	var raidEnglish = document.createElement( "div" );
 	raidEnglish.classList.add( "header" );
-	raidEnglish.innerHTML = raid.english;
+	raidEnglish.innerHTML = raid.japanese;
 	raidContent.appendChild( raidEnglish );
 	var raidJapanese = document.createElement( "div" );
 	raidJapanese.classList.add( "meta" );
@@ -746,7 +746,7 @@ function AddSelectedVerticalNormalRaid( raid ) {
 	raidContent.classList.add( "content" );
 	var raidEnglish = document.createElement( "div" );
 	raidEnglish.classList.add( "header" );
-	raidEnglish.innerHTML = raid.english;
+	raidEnglish.innerHTML = raid.japanese;
 	raidContent.appendChild( raidEnglish );
 	var raidJapanese = document.createElement( "div" );
 	raidJapanese.classList.add( "meta" );
@@ -817,7 +817,7 @@ function AddSelectedVerticalFullRaid( raid ) {
 	raidContent.classList.add( "content" );
 	var raidEnglish = document.createElement( "div" );
 	raidEnglish.classList.add( "header" );
-	raidEnglish.innerHTML = raid.english;
+	raidEnglish.innerHTML = raid.japanese;
 	raidContent.appendChild( raidEnglish );
 	var raidJapanese = document.createElement( "div" );
 	raidJapanese.classList.add( "meta" );

@@ -83,7 +83,7 @@ function CreateHorizontalCompactRaidRow( data ) {
 		joinButton.classList.add( "ui", "positive", "button", "right", "labeled", "icon", "toggle", "join-raid-btn" );
 	}
 	joinButton.id = data.id + '-btn';
-	joinButton.innerHTML = 'Join Raid<i class="right sign in icon"></i>';
+	joinButton.innerHTML = 'IDをコピー<i class="right sign in icon"></i>';
 	try {
 		joinTD.appendChild( joinButton );
 		newLine.appendChild( imageTD );
@@ -120,7 +120,7 @@ function CreateHorizontalNormalRaidRow( data ) {
 	var timeTD = document.createElement( "td" );
 	timeTD.id = data.id + '-time';
 	timeTD.classList.add( "center", "aligned" );
-	timeTD.innerHTML = "0 secs ago";
+	timeTD.innerHTML = "0 秒経過";
 	var joinTD = document.createElement( "td" );
 	joinTD.classList.add( "center", "aligned" );
 	var joinButton = document.createElement( "button" );
@@ -134,7 +134,7 @@ function CreateHorizontalNormalRaidRow( data ) {
 		joinButton.classList.add( "ui", "positive", "button", "right", "labeled", "icon", "toggle", "join-raid-btn" );
 	}
 	joinButton.id = data.id + '-btn';
-	joinButton.innerHTML = 'Join Raid<i class="right sign in icon"></i>';
+	joinButton.innerHTML = 'IDをコピー<i class="right sign in icon"></i>';
 	try {
 		joinTD.appendChild( joinButton );
 		newLine.appendChild( imageTD );
@@ -186,7 +186,7 @@ function CreateHorizontalFullRaidRow( data ) {
 	var timediv = document.createElement( "div" );
 	timediv.id = data.id + '-time';
 	timediv.classList.add( "time-filler" );
-	timediv.innerHTML = "0 secs ago";
+	timediv.innerHTML = "0 秒経過";
 	joinTD.appendChild( timediv );
 	joinTD.innerHTML += '<div class="ui divider"></div>';
 	var joinButton = document.createElement( "button" );
@@ -200,7 +200,7 @@ function CreateHorizontalFullRaidRow( data ) {
 		joinButton.classList.add( "ui", "positive", "button", "right", "labeled", "icon", "toggle", "join-raid-btn" );
 	}
 	joinButton.id = data.id + '-btn';
-	joinButton.innerHTML = 'Join Raid<i class="right sign in icon"></i>';
+	joinButton.innerHTML = 'IDをコピー<i class="right sign in icon"></i>';
 	try {
 		joinTD.appendChild( joinButton );
 		newLine.appendChild( imageTD );
@@ -245,7 +245,7 @@ function CreateVerticalCompactRaidRow( data ) {
 		joinButton.classList.add( "ui", "positive", "button", "right", "labeled", "icon", "toggle", "join-raid-btn" );
 	}
 	joinButton.id = data.id + '-btn';
-	joinButton.innerHTML = 'Join Raid<i class="right sign in icon"></i>';
+	joinButton.innerHTML = 'IDをコピー<i class="right sign in icon"></i>';
 	try {
 		joinTD.appendChild( joinButton );
 		newLine.appendChild( idTD );
@@ -279,7 +279,7 @@ function CreateVerticalNormalRaidRow( data ) {
 	var timeTD = document.createElement( "td" );
 	timeTD.id = data.id + '-time';
 	timeTD.classList.add( "center", "aligned" );
-	timeTD.innerHTML = "0 secs ago";
+	timeTD.innerHTML = "0 秒経過";
 	var joinTD = document.createElement( "td" );
 	joinTD.classList.add( "center", "aligned" );
 	var joinButton = document.createElement( "button" );
@@ -293,7 +293,7 @@ function CreateVerticalNormalRaidRow( data ) {
 		joinButton.classList.add( "ui", "positive", "button", "right", "labeled", "icon", "toggle", "join-raid-btn" );
 	}
 	joinButton.id = data.id + '-btn';
-	joinButton.innerHTML = 'Join Raid<i class="right sign in icon"></i>';
+	joinButton.innerHTML = 'IDをコピー<i class="right sign in icon"></i>';
 	try {
 		joinTD.appendChild( joinButton );
 		newLine.appendChild( idTD );
@@ -331,7 +331,7 @@ function CreateVerticalFullRaidRow( data ) {
 	var timeTD = document.createElement( "td" );
 	timeTD.id = data.id + '-time';
 	timeTD.classList.add( "center", "aligned" );
-	timeTD.innerHTML = "0 secs ago";
+	timeTD.innerHTML = "0 秒経過";
 	var joinTD = document.createElement( "td" );
 	joinTD.classList.add( "center", "aligned" );
 	var joinButton = document.createElement( "button" );
@@ -345,7 +345,7 @@ function CreateVerticalFullRaidRow( data ) {
 		joinButton.classList.add( "ui", "positive", "button", "right", "labeled", "icon", "toggle", "join-raid-btn" );
 	}
 	joinButton.id = data.id + '-btn';
-	joinButton.innerHTML = 'Join Raid<i class="right sign in icon"></i>';
+	joinButton.innerHTML = 'IDをコピー<i class="right sign in icon"></i>';
 	try {
 		joinTD.appendChild( joinButton );
 		newLine.appendChild( idTD );
@@ -402,7 +402,7 @@ function UpdateRaidRow( data ) {
 			}
 		} else {
 			if ( settings.layout.infoLevel === "normal" || settings.layout.infoLevel === "full" ) {
-				document.getElementById( data.id + '-time' ).innerHTML = moment().diff( data.time, "seconds" ) + ' secs ago';
+				document.getElementById( data.id + '-time' ).innerHTML = moment().diff( data.time, "seconds" ) + ' 秒経過';
 			}
 		}
 	}
@@ -462,7 +462,7 @@ function CreateHorizontalNormalRaidTable() {
 	if ( document.getElementById( "selected-raids-label" ) === null ) {
 		var selectedRaidsDiv = document.createElement( "div" );
 		selectedRaidsDiv.classList.add( "ui", "secondary", "inverted", "blue", "segment" );
-		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">Selected Raids:</div><div id="selected-raids" class="ui segment">No raids selected. Please search for a raid in the search bar above.</div>';
+		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">バトルが設定されていません。検索して追加してください。</div>';
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
 	raidTable.classList.add( "padded" );

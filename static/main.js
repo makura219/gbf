@@ -269,7 +269,7 @@ function SendDesktopNotif( data ) {
 				var notification = null;
 				var title = "";
 				if ( data.language === "EN" ) {
-					title = raidConfig.english;
+					title = raidConfig.japanese;
 				} else {
 					title = raidConfig.japanese;
 				}
@@ -317,7 +317,7 @@ function SendDesktopNotif( data ) {
 							var notification = null;
 							var title = "";
 							if ( data.language === "EN" ) {
-								title = raidConfig.english;
+								title = raidConfig.japanese;
 							} else {
 								title = raidConfig.japanese;
 							}

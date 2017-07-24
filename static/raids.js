@@ -438,10 +438,10 @@ function CreateHorizontalCompactRaidTable() {
 	if ( document.getElementById( "selected-raids-label" ) === null ) {
 		var selectedRaidsDiv = document.createElement( "div" );
 		selectedRaidsDiv.classList.add( "ui", "secondary", "inverted", "blue", "segment" );
-		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">Selected Raids:</div><div id="selected-raids" class="ui segment">No raids selected. Please search for a raid in the search bar above.</div>';
+		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">バトルが選択されていません。検索して追加してください。</div>';
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
-	raidTable.innerHTML = '<thead><tr><th class="center aligned nine wide">Raid Name</th><th class="center aligned single line three wide">Raid ID</th><th class="center aligned single line four wide">Join Raid</th></tr></thead>';
+	raidTable.innerHTML = '<thead><tr><th class="center aligned nine wide">敵の名前</th><th class="center aligned single line three wide">救援ID</th><th class="center aligned single line four wide">IDをコピー</th></tr></thead>';
 	var raidTableBody = document.createElement( "tbody" );
 	raidTableBody.id = "table-body";
 	try {
@@ -466,7 +466,7 @@ function CreateHorizontalNormalRaidTable() {
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
 	raidTable.classList.add( "padded" );
-	raidTable.innerHTML = '<thead><tr><th class="center aligned eight wide">Raid Name</th><th class="center aligned single line two wide">Raid ID</th><th class="center aligned single line three wide">Time Tweeted</th><th class="center aligned single line three wide">Join Raid</th></tr></thead>';
+	raidTable.innerHTML = '<thead><tr><th class="center aligned eight wide">敵の名前</th><th class="center aligned single line two wide">救援ID</th><th class="center aligned single line three wide">経過時間</th><th class="center aligned single line three wide">IDコピー</th></tr></thead>';
 	var raidTableBody = document.createElement( "tbody" );
 	raidTableBody.id = "table-body";
 	try {
@@ -487,7 +487,7 @@ function CreateHorizontalFullRaidTable() {
 	if ( document.getElementById( "selected-raids-label" ) === null ) {
 		var selectedRaidsDiv = document.createElement( "div" );
 		selectedRaidsDiv.classList.add( "ui", "secondary", "inverted", "blue", "segment" );
-		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">Selected Raids:</div><div id="selected-raids" class="ui segment">No raids selected. Please search for a raid in the search bar above.</div>';
+		selectedRaidsDiv.innerHTML = '<div id="selected-raids-label">選択しているバトル:</div><div id="selected-raids" class="ui segment">バトルが設定されていません。検索して追加してください。</div>';
 		document.getElementById( "header" ).appendChild( selectedRaidsDiv );
 	}
 	raidTable.classList.add( "padded" );
@@ -690,7 +690,7 @@ function AddSelectedVerticalCompactRaid( raid ) {
 	var settingsButton = document.createElement( "button" );
 	settingsButton.classList.add( "ui", "tiny", "primary", "button", "left", "labeled", "icon" );
 	settingsButton.id = raid.room + '-settings';
-	settingsButton.innerHTML = 'Settings<i class="left settings icon"></i>';
+	settingsButton.innerHTML = '設定<i class="left settings icon"></i>';
 	raidSettings.appendChild( settingsButton );
 	raidSettings.appendChild( removeButton );
 	raidContent.appendChild( raidSettings );
@@ -700,7 +700,7 @@ function AddSelectedVerticalCompactRaid( raid ) {
 	var raidTable = document.createElement( "table" );
 	raidTable.classList.add( "ui", "blue", "celled", "table", "compact", "smaller" );
 	raidTable.id = raid.room + "-table";
-	raidTable.innerHTML = '<thead><tr><th class="center aligned single line">Raid ID</th><th class="center aligned single line">Join Raid</th></tr></thead>';
+	raidTable.innerHTML = '<thead><tr><th class="center aligned single line">救援ID</th><th class="center aligned single line">IDをコピー</th></tr></thead>';
 	var raidTableBody = document.createElement( "tbody" );
 	raidTableBody.id = raid.room + "-table-body";
 	try {
@@ -771,7 +771,7 @@ function AddSelectedVerticalNormalRaid( raid ) {
 	var raidTable = document.createElement( "table" );
 	raidTable.classList.add( "ui", "blue", "celled", "table", "compact", "smaller" );
 	raidTable.id = raid.room + "-table";
-	raidTable.innerHTML = '<thead><tr><th class="center aligned single line">Raid ID</th><th class="center aligned single line">Time Tweeted</th><th class="center aligned single line">Join Raid</th></tr></thead>';
+	raidTable.innerHTML = '<thead><tr><th class="center aligned single line">救援ID</th><th class="center aligned single line">経過時間</th><th class="center aligned single line">IDをコピー</th></tr></thead>';
 	var raidTableBody = document.createElement( "tbody" );
 	raidTableBody.id = raid.room + "-table-body";
 	try {
@@ -842,7 +842,7 @@ function AddSelectedVerticalFullRaid( raid ) {
 	var raidTable = document.createElement( "table" );
 	raidTable.classList.add( "ui", "blue", "celled", "table", "compact", "smaller" );
 	raidTable.id = raid.room + "-table";
-	raidTable.innerHTML = '<thead><tr><th class="center aligned single line">ID</th><th class="center aligned">Message</th><th class="center aligned single line">Time Tweeted</th><th class="center aligned single line">Join Raid</th></tr></thead>';
+	raidTable.innerHTML = '<thead><tr><th class="center aligned single line">ID</th><th class="center aligned">コメント</th><th class="center aligned single line">経過時間</th><th class="center aligned single line">IDをコピー</th></tr></thead>';
 	var raidTableBody = document.createElement( "tbody" );
 	raidTableBody.id = raid.room + "-table-body";
 	try {

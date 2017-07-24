@@ -3,9 +3,11 @@ let twitter = require( 'twitter' );
 let st = require( 'st' );
 let app = express();
 let bodyParser = require( 'body-parser' );
+let compression = require( 'compression' );
+let morgan = require( 'morgan' );
 let server = require( 'http' ).createServer( app );
 let io = require( 'socket.io' ).listen( server );
-let port = process.env.PORT || 8080;
+let port = process.env.PORT || 80;
 server.listen( port );
 
 let client = new twitter( {
@@ -14,6 +16,10 @@ let client = new twitter( {
 	access_token_key: process.env.access_token_key,
 	access_token_secret: process.env.access_token_secret
 } );
+
+function TimedLogger( data ) {
+	console.log( new Date().toString() + " - " + data );
+}
 
 let raidConfigs = require( './raids.json' );
 
@@ -30,32 +36,63 @@ client.stream( 'statuses/filter', {
 	track: keywords
 }, function ( stream ) {
 	stream.on( 'data', function ( event ) {
+		TimedLogger( "Tweet found." );
 		let room = searchTextForRaids( event.text );
-		var testId = event.text.substr( event.text.indexOf( 'ID' ) + 3, 9 );
-		if ( testId.charAt( 0 ) == " " ) {
-			testId = testId.substr( 1, 8 );
+		var message = "No Twitter Message.";
+		var language = "JP";
+		var raidID = event.text.substr( event.text.indexOf( 'ID' ) + 3, 9 );
+
+		if ( raidID.charAt( 0 ) == " " ) {
+			raidID = raidID.substr( 1, 8 );
 		} else {
-			testId = testId.substr( 0, 8 );
+			raidID = raidID.substr( 0, 8 );
 		}
-		var testMsg = "No Twitter Message.";
+
 		if ( event.text.substr( 0, 10 ) !== "参加者募集！参戦ID" && event.text.substr( 0, 10 ) !== "I need bac" ) {
 			if ( event.text.indexOf( '参戦ID' ) !== -1 ) {
-				testMsg = event.text.substring( 0, event.text.indexOf( '参戦ID' ) - 7 );
+				message = event.text.substring( 0, event.text.indexOf( '参戦ID' ) - 7 );
+				language = "JP";
 			} else if ( event.text.indexOf( 'Battle ID' ) !== -1 ) {
-				testMsg = event.text.substring( 0, event.text.indexOf( 'Battle ID' ) - 15 );
+				message = event.text.substring( 0, event.text.indexOf( 'Battle ID' ) - 15 );
+				language = "EN";
 			}
 		}
-		io.to( room ).emit( 'tweet', {
-			id: testId,
+
+		var raidInfo = {
+			id: raidID,
 			time: event.created_at,
 			room: room,
-			message: testMsg
-		} );
+			message: message,
+			language: language,
+			status: "unclicked"
+		};
+
+		TimedLogger( "Raid Info: " );
+		console.dir( raidInfo );
+		io.to( room ).emit( 'tweet', raidInfo );
 	} );
 
 	stream.on( 'error', function ( error ) {
-		console.log( error );
+		TimedLogger( error );
+		io.sockets.sockets.forEach( function ( s ) {
+			s.disconnect( true );
+		} );
 	} );
+} );
+
+io.sockets.on( 'connection', function ( socket ) {
+	TimedLogger( "New connection established." );
+	socket.on( 'subscribe',
+		function ( data ) {
+			TimedLogger( "Room subscribed: " + data.room );
+			socket.join( data.room );
+		} );
+
+	socket.on( 'unsubscribe',
+		function ( data ) {
+			TimedLogger( "Room unsubscribed: " + data.room );
+			socket.leave( data.room );
+		} );
 } );
 
 function searchTextForRaids( text ) {
@@ -70,6 +107,8 @@ function searchTextForRaids( text ) {
 }
 
 app.set( 'json spaces', 0 );
+app.use( compression() );
+app.use( morgan( 'combined' ) );
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded( {
 	extended: true
@@ -93,23 +132,11 @@ app.use( st( {
 	gzip: true,
 	cache: {
 		content: {
-			max: 1024 * 1024, //1024 * 1024 * 64, // how much memory to use on caching contents (bytes * kilo * mega)
-			maxAge: 1000 * 60 * 60 * 12 //1000 * 60 * 60 * 24 * 3, // how long to cache contents for (milliseconds * seconds * minutes * hours * days)
+			max: 1024 * 1024 * 64, // how much memory to use on caching contents (bytes * kilo * mega)
+			maxAge: 1000 * 60 * 60 * 24 * 3, // how long to cache contents for (milliseconds * seconds * minutes * hours * days)
 		}
 	},
 	passthrough: false
 } ) );
 
-io.sockets.on( 'connection', function ( socket ) {
-	socket.on( 'subscribe',
-		function ( data ) {
-			socket.join( data.room );
-		} );
-
-	socket.on( 'unsubscribe',
-		function ( data ) {
-			socket.leave( data.room );
-		} );
-
-} );
-console.log( "Starting GBF Raiders on port " + port + "." );
+TimedLogger( "Starting GBF Raiders on port " + port + "." );

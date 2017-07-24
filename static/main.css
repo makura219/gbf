@@ -180,9 +180,9 @@ td.larger>img {
 
 #connection-status {
 	display: inline-block;
-	margin-bottom: -14px;
+	/*margin-bottom: -14px;
 	margin-top: -14px;
-	margin-right: 5px;
+	margin-right: 5px;*/
 }
 
 @media (max-width: 650px) {

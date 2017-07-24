@@ -12,20 +12,20 @@ function SetupSettingsModal( raid ) {
 				console.dir( individualSettings[ i ] );
 			}
 			if ( individualSettings[ i ].settings.desktopNotifOn ) {
-				document.getElementById( "modal-enable-notif" ).innerHTML = 'デスクトップ通知をオフにする<i class="right remove circle icon"></i>';
+				document.getElementById( "modal-enable-notif" ).innerHTML = 'Disable Desktop Notifications<i class="right remove circle icon"></i>';
 				document.getElementById( "modal-enable-notif" ).classList.add( "negative" );
 				document.getElementById( "modal-desktop-notif-size-control" ).classList.remove( "input-control-disabled" );
 				document.getElementById( "modal-desktop-notif-size-control" ).classList.add( "input-control" );
 				document.getElementById( "modal-desktop-notif-size-dropdown" ).classList.remove( "disabled" );
 			} else {
-				document.getElementById( "modal-enable-notif" ).innerHTML = 'デスクトップ通知をオンにする<i class="right check circle icon"></i>';
+				document.getElementById( "modal-enable-notif" ).innerHTML = 'Enable Desktop Notifications<i class="right check circle icon"></i>';
 				document.getElementById( "modal-enable-notif" ).classList.remove( "negative" );
 				document.getElementById( "modal-desktop-notif-size-control" ).classList.add( "input-control-disabled" );
 				document.getElementById( "modal-desktop-notif-size-control" ).classList.remove( "input-control" );
 				document.getElementById( "modal-desktop-notif-size-dropdown" ).classList.add( "disabled" );
 			}
 			if ( individualSettings[ i ].settings.soundNotifOn ) {
-				document.getElementById( "modal-enable-sound" ).innerHTML = 'サウンド通知をオフにする<i class="right alarm mute outline icon"></i>';
+				document.getElementById( "modal-enable-sound" ).innerHTML = 'Disable Sound Notifications<i class="right alarm mute outline icon"></i>';
 				document.getElementById( "modal-enable-sound" ).classList.add( "negative" );
 				document.getElementById( "modal-sound-volume-control" ).classList.remove( "slider-control-disabled" );
 				document.getElementById( "modal-sound-volume-control" ).classList.add( "slider-control" );
@@ -34,7 +34,7 @@ function SetupSettingsModal( raid ) {
 				document.getElementById( "modal-sound-choice-control" ).classList.add( "input-control" );
 				document.getElementById( "modal-sound-choice-dropdown" ).classList.remove( "disabled" );
 			} else {
-				document.getElementById( "modal-enable-sound" ).innerHTML = 'サウンド通知をオンにする<i class="right alarm outline icon"></i>';
+				document.getElementById( "modal-enable-sound" ).innerHTML = 'Enable Sound Notifications<i class="right alarm outline icon"></i>';
 				document.getElementById( "modal-enable-sound" ).classList.remove( "negative" );
 				document.getElementById( "modal-sound-volume-control" ).classList.add( "slider-control-disabled" );
 				document.getElementById( "modal-sound-volume-control" ).classList.remove( "slider-control" );
@@ -62,12 +62,12 @@ function SaveIndividualSettings() {
 			if ( settings.debugLevel > 0 ) {
 				console.log( "Saving individual settings for raid: " + individualSettings[ i ].room );
 			}
-			if ( document.getElementById( "modal-enable-sound" ).innerHTML === 'サウンド通知をオフにする<i class="right alarm mute outline icon"></i>' ) {
+			if ( document.getElementById( "modal-enable-sound" ).innerHTML === 'Disable Sound Notifications<i class="right alarm mute outline icon"></i>' ) {
 				individualSettings[ i ].settings.soundNotifOn = true;
 			} else {
 				individualSettings[ i ].settings.soundNotifOn = false;
 			}
-			if ( document.getElementById( "modal-enable-notif" ).innerHTML === 'デスクトップ通知をオフにする<i class="right remove circle icon"></i>' ) {
+			if ( document.getElementById( "modal-enable-notif" ).innerHTML === 'Disable Desktop Notifications<i class="right remove circle icon"></i>' ) {
 				individualSettings[ i ].settings.desktopNotifOn = true;
 			} else {
 				individualSettings[ i ].settings.desktopNotifOn = false;
@@ -94,15 +94,15 @@ function CreateSettingsModalFrame() {
 	result += '<div class="image content">';
 	result += '<img id="settings-modal-image" class="ui medium rounded image" src="http://via.placeholder.com/250x250">';
 	result += '<div id="settings-modal-desc" class="description">';
-	result += '<button id="modal-enable-notif" class="ui bigger button right labeled icon">デスクトップ通知をオンにする<i class="right check circle icon"></i></button>';
-	result += '<span id="modal-desktop-notif-size-control" class="input-control-disabled"><span class="input-title">通知の大きさ</span><div id="modal-desktop-notif-size-dropdown" class="ui disabled compact selection dropdown"><input id="modal-desktop-notif-size-input" type="hidden" name="formatting" value="large"><i class="dropdown icon"></i><div class="default text">通知の大きさ</div><div class="menu"><div class="item" data-value="small">小さい</div><div class="item" data-value="large">大きい</div></div></div></span>';
-	result += '<button id="modal-enable-sound" class="ui bigger button right labeled icon">サウンド通知をオンにする<i class="right alarm outline icon"></i></button>';
-	result += '<span id="modal-sound-choice-control" class="input-control-disabled"><span class="input-title">通知音を選択</span><div id="modal-sound-choice-dropdown" class="ui compact selection disabled dropdown"><input id="modal-sound-choice-input" type="hidden" name="formatting" value="beeps"><i class="dropdown icon"></i><div class="default text">Sound Choice</div><div class="menu"><div class="item" data-value="beeps">Beeps Appear</div><div class="item" data-value="lily-event-ringring">GBF - Lily (Event) - Ring Ring</div><div class="item" data-value="andira-oniichan">GBF - Andira - Onii-chan</div><div class="item" data-value="titanfall-droppingnow">Titanfall - Dropping Now</div></div></div></span>';
-	result += '<span id="modal-sound-volume-control" class="slider-control-disabled"><span class="slider-title">音量</span><input id="modal-sound-volume-slider" class="slider-range slider" type="range" min="0" max="100" value="100" disabled></span>';
+	result += '<button id="modal-enable-notif" class="ui bigger button right labeled icon">Enable Desktop Notifications<i class="right check circle icon"></i></button>';
+	result += '<span id="modal-desktop-notif-size-control" class="input-control-disabled"><span class="input-title">Desktop Notification Size</span><div id="modal-desktop-notif-size-dropdown" class="ui disabled compact selection dropdown"><input id="modal-desktop-notif-size-input" type="hidden" name="formatting" value="large"><i class="dropdown icon"></i><div class="default text">Notif Size</div><div class="menu"><div class="item" data-value="small">Small</div><div class="item" data-value="large">Large</div></div></div></span>';
+	result += '<button id="modal-enable-sound" class="ui bigger button right labeled icon">Enable Sound Notifications<i class="right alarm outline icon"></i></button>';
+	result += '<span id="modal-sound-choice-control" class="input-control-disabled"><span class="input-title">Sound Notification Choice</span><div id="modal-sound-choice-dropdown" class="ui compact selection disabled dropdown"><input id="modal-sound-choice-input" type="hidden" name="formatting" value="beeps"><i class="dropdown icon"></i><div class="default text">Sound Choice</div><div class="menu"><div class="item" data-value="beeps">Beeps Appear</div><div class="item" data-value="lily-event-ringring">GBF - Lily (Event) - Ring Ring</div><div class="item" data-value="andira-oniichan">GBF - Andira - Onii-chan</div><div class="item" data-value="titanfall-droppingnow">Titanfall - Dropping Now</div></div></div></span>';
+	result += '<span id="modal-sound-volume-control" class="slider-control-disabled"><span class="slider-title">Sound Notification Volume</span><input id="modal-sound-volume-slider" class="slider-range slider" type="range" min="0" max="100" value="100" disabled></span>';
 	result += '</div></div>';
 	result += '<div id="settings-modal-actions" class="actions">';
-	result += '<div id="settings-modal-save-btn" class="ui large positive button">保存</div>';
-	result += '<div id="settings-modal-cancel-btn" class="ui large negative button">キャンセル</div>';
+	result += '<div id="settings-modal-save-btn" class="ui large positive button">Save</div>';
+	result += '<div id="settings-modal-cancel-btn" class="ui large negative button">Cancel</div>';
 	result += '</div></div>';
 	return result;
 }
@@ -139,7 +139,7 @@ function LoadSavedSettings() {
 			document.getElementById( "news-message" ).classList.remove( "hidden" );
 		}
 		if ( settings.notification.desktopNotifOn ) {
-			document.getElementById( "enable-notif" ).innerHTML = 'デスクトップ通知をオフにする<i class="right remove circle icon"></i>';
+			document.getElementById( "enable-notif" ).innerHTML = 'Disable Desktop Notifications<i class="right remove circle icon"></i>';
 			document.getElementById( "enable-notif" ).classList.add( "negative" );
 			document.getElementById( "desktop-notif-size-control" ).classList.remove( "input-control-disabled" );
 			document.getElementById( "desktop-notif-size-control" ).classList.add( "input-control" );
@@ -147,7 +147,7 @@ function LoadSavedSettings() {
 		}
 		document.getElementById( "desktop-notif-size-input" ).value = settings.notification.desktopNotifSize;
 		if ( settings.notification.soundNotifOn ) {
-			document.getElementById( "enable-sound" ).innerHTML = 'サウンド通知をオフにする<i class="right alarm mute outline icon"></i>';
+			document.getElementById( "enable-sound" ).innerHTML = 'Disable Sound Notifications<i class="right alarm mute outline icon"></i>';
 			document.getElementById( "enable-sound" ).classList.add( "negative" );
 			document.getElementById( "sound-volume-control" ).classList.remove( "slider-control-disabled" );
 			document.getElementById( "sound-volume-control" ).classList.add( "slider-control" );
@@ -172,7 +172,7 @@ function LoadSavedSettings() {
 		if ( settings.layout.nightMode ) {
 			document.body.classList.add( "darken" );
 			document.getElementById( "enable-night" ).classList.add( "negative" );
-			document.getElementById( "enable-night" ).innerHTML = 'ダークモードをオフにする<i class="right sun icon"></i>';
+			document.getElementById( "enable-night" ).innerHTML = 'Disable Night Mode<i class="right sun icon"></i>';
 		}
 		if ( localStorage.getItem( "individualSettings" ) ) {
 			try {
@@ -336,12 +336,12 @@ function SetupControls() {
 				settings.layout.nightMode = true;
 				document.body.classList.add( "darken" );
 				document.getElementById( "enable-night" ).classList.add( "negative" );
-				document.getElementById( "enable-night" ).innerHTML = 'ダークモードをオフにする<i class="right sun icon"></i>';
+				document.getElementById( "enable-night" ).innerHTML = 'Disable Night Mode<i class="right sun icon"></i>';
 			} else {
 				settings.layout.nightMode = false;
 				document.body.classList.remove( "darken" );
 				document.getElementById( "enable-night" ).classList.remove( "negative" );
-				document.getElementById( "enable-night" ).innerHTML = 'ダークモードをオンにする<i class="right moon icon"></i>';
+				document.getElementById( "enable-night" ).innerHTML = 'Enable Night Mode<i class="right moon icon"></i>';
 			}
 			localStorage.setItem( "savedSettings", JSON.stringify( settings ) );
 		} );
@@ -381,7 +381,7 @@ function SetupControls() {
 
 		document.getElementById( "full-screen" ).addEventListener( "click", function ( event ) {
 			if ( document.fullscreenElement || document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen ) {
-				document.getElementById( "full-screen" ).innerHTML = 'フルスクリーン<i class="right expand icon"></i>';
+				document.getElementById( "full-screen" ).innerHTML = 'Full Screen<i class="right expand icon"></i>';
 				document.getElementById( "full-screen" ).classList.remove( "negative" );
 				document.getElementById( "full-screen" ).classList.add( "primary" );
 				if ( document.exitFullscreen ) {
@@ -392,7 +392,7 @@ function SetupControls() {
 					document.webkitCancelFullScreen();
 				}
 			} else {
-				document.getElementById( "full-screen" ).innerHTML = 'ノーマルスクリーン<i class="right compress icon"></i>';
+				document.getElementById( "full-screen" ).innerHTML = 'Normal Screen<i class="right compress icon"></i>';
 				document.getElementById( "full-screen" ).classList.remove( "primary" );
 				document.getElementById( "full-screen" ).classList.add( "negative" );
 				if ( document.body.requestFullscreen ) {
@@ -479,8 +479,8 @@ function ToggleDesktopNotifications( clicked ) {
 				if ( permission === "granted" ) {
 					if ( clicked ) {
 						try {
-							var notification = new Notification( "通知がオンになったぜ！", {
-								body: "通知をクリックするとIDがコピーできるからな！",
+							var notification = new Notification( "Thank you for enabling notifications!", {
+								body: "Click on notifications to copy the ID!",
 								icon: "/assets/stickers/heregoes-sticker.png"
 							} );
 						} catch ( error ) {
@@ -493,7 +493,7 @@ function ToggleDesktopNotifications( clicked ) {
 							individualSettings[ i ].settings.desktopNotifOn = true;
 						}
 					}
-					document.getElementById( "enable-notif" ).innerHTML = 'デスクトップ通知をオフにする<i class="right remove circle icon"></i>';
+					document.getElementById( "enable-notif" ).innerHTML = 'Disable Desktop Notifications<i class="right remove circle icon"></i>';
 					document.getElementById( "enable-notif" ).classList.add( "negative" );
 					document.getElementById( "desktop-notif-size-control" ).classList.remove( "input-control-disabled" );
 					document.getElementById( "desktop-notif-size-control" ).classList.add( "input-control" );
@@ -509,7 +509,7 @@ function ToggleDesktopNotifications( clicked ) {
 				individualSettings[ i ].settings.desktopNotifOn = false;
 			}
 		}
-		document.getElementById( "enable-notif" ).innerHTML = 'デスクトップ通知をオンにする<i class="right check circle icon"></i>';
+		document.getElementById( "enable-notif" ).innerHTML = 'Enable Desktop Notifications<i class="right check circle icon"></i>';
 		document.getElementById( "enable-notif" ).classList.remove( "negative" );
 		document.getElementById( "desktop-notif-size-control" ).classList.remove( "input-control" );
 		document.getElementById( "desktop-notif-size-control" ).classList.add( "input-control-disabled" );
@@ -529,7 +529,7 @@ function ToggleSoundNotifications( clicked ) {
 				individualSettings[ i ].settings.soundNotifOn = true;
 			}
 		}
-		document.getElementById( "enable-sound" ).innerHTML = 'サウンド通知をオフにする<i class="right alarm mute outline icon"></i>';
+		document.getElementById( "enable-sound" ).innerHTML = 'Disable Sound Notifications<i class="right alarm mute outline icon"></i>';
 		document.getElementById( "enable-sound" ).classList.add( "negative" );
 		document.getElementById( "sound-volume-control" ).classList.remove( "slider-control-disabled" );
 		document.getElementById( "sound-volume-control" ).classList.add( "slider-control" );
@@ -548,7 +548,7 @@ function ToggleSoundNotifications( clicked ) {
 				individualSettings[ i ].settings.soundNotifOn = false;
 			}
 		}
-		document.getElementById( "enable-sound" ).innerHTML = 'サウンド通知をオンにする<i class="right alarm outline icon"></i>';
+		document.getElementById( "enable-sound" ).innerHTML = 'Enable Sound Notifications<i class="right alarm outline icon"></i>';
 		document.getElementById( "enable-sound" ).classList.remove( "negative" );
 		document.getElementById( "sound-volume-control" ).classList.remove( "slider-control" );
 		document.getElementById( "sound-volume-control" ).classList.add( "slider-control-disabled" );

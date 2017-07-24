@@ -180,7 +180,7 @@ window.onload = function () {
 			setInterval( function () {
 				CheckConnectionStatus();
 				if ( selectedRaidsArray.length === 0 ) {
-					document.getElementById( "selected-raids" ).innerHTML = "No raids selected. Please search for a raid in the search bar above.";
+					document.getElementById( "selected-raids" ).innerHTML = "バトルが選択されていません。検索して追加してください。";
 				}
 				for ( var i = raids.length - 1; i >= 0; i-- ) {
 					UpdateRaidRow( raids[ i ] );

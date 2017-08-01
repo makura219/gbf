@@ -313,4 +313,14 @@
 {"english":"Lvl 100 Snowman",
 "image":"https://pbs.twimg.com/media/C0Axj32UoAA2ZO6.jpg",
 "japanese":"Lv100 スノウマン",
-"room":"lvl100snowman"}]
+"room":"lvl100snowman"},
+{"english":"Lvl 150 Ultimate Bahamut",
+"image":"/assets/raids/BattleRaid_Ultimate_Bahamut_Normal.png",
+"japanese":"Lv150 アルティメットバハムート",
+"room":"lvl150ultimatebahamut"},
+{"english":"Lvl 200 Ultimate Bahamut",
+"image":"/assets/raids/BattleRaid_Ultimate_Bahamut_Impossible.png",
+"japanese":"Lv200 アルティメットバハムート",
+"room":"lvl200ultimatebahamut"}
+
+]

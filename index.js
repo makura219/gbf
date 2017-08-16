@@ -1,4 +1,4 @@
-let express = require( 'express' );
+﻿let express = require( 'express' );
 let twitter = require( 'twitter' );
 let st = require( 'st' );
 let app = express();
@@ -16,6 +16,14 @@ let client = new twitter( {
 	access_token_key: process.env.access_token_key,
 	access_token_secret: process.env.access_token_secret
 } );
+
+var http = require("http");
+setInterval(function() {
+    http.get("http://follow-bot-9ketsuki.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
+setInterval(function() {
+    http.get("http://favorite-app.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
 function TimedLogger( data ) {
 	console.log( new Date().toString() + " - " + data );
